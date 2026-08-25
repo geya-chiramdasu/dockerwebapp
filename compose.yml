@@ -7,7 +7,7 @@ services:
     build: ./Docker-app/
     ports:
       - "8081:8080"
-    volume:
+    volumes:
       - appvol: /app/vol/
 
   dockerdb:
@@ -15,7 +15,7 @@ services:
     build: ./Docker-db/
     ports:
       - "3306:3306"
-    volume:
+    volumes:
       - dbvol: /db/vol/
 
 volumes:
