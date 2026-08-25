@@ -8,7 +8,7 @@ services:
     ports:
       - "8081:8080"
     volumes:
-      - appvol: /app/vol/
+      - appvol:/app/vol/
 
   dockerdb:
     container_name: dbcont
@@ -16,7 +16,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - dbvol: /db/vol/
+      - dbvol:/db/vol/
 
 volumes:
   appvol: 
