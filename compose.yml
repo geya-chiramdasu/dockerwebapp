@@ -9,6 +9,9 @@ services:
       - "8081:8080"
     volumes:
       - appvol:/app/vol/
+    networks:
+      - appnetwork
+      - dbnetwork
 
   dockerdb:
     container_name: dbcont
@@ -17,10 +20,19 @@ services:
       - "3306:3306"
     volumes:
       - dbvol:/db/vol/
+    networks:
+      - dbnetwork
+      - appnetwork
 
 volumes:
   appvol: 
     driver: local
   dbvol:
     driver: local
+
+networks:
+  appnetwork:
+    driver: bridge
+  dbnetwork:
+    driver: bridge
     
