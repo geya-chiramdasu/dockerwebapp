@@ -19,6 +19,8 @@ services:
       - dbvol: /db/vol/
 
 volumes:
-  appvol:
+  appvol: 
+    driver: local
   dbvol:
+    driver: local
     
