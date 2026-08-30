@@ -7,15 +7,15 @@ services:
     ports:
       - "9999:8080"
     deploy:
-      replicas=3
+      replicas: 3
     depends_on:
-      - "devopsdb"
+      - devopsdb
 
   devopsdb:
     image: geyachiramdasu08/dbimg:db
     ports:
       - "3306:3306"
     deploy:
-      replicas=3
+      replicas: 3
 
     
