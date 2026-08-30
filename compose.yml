@@ -3,36 +3,19 @@ version: "3.9"
 
 services:
   dockerapp: 
-    container_name: appcont
-    build: ./Docker-app/
+    image: geyachiramdasu08/appimg:app
     ports:
-      - "8081:8080"
-    volumes:
-      - appvol:/app/vol/
-    networks:
-      - appnetwork
-      - dbnetwork
+      - "9999:8080"
+    deploy:
+      replicas=3
+    depends_on:
+      - "devopsdb"
 
-  dockerdb:
-    container_name: dbcont
-    build: ./Docker-db/
+  devopsdb:
+    image: geyachiramdasu08/dbimg:db
     ports:
       - "3306:3306"
-    volumes:
-      - dbvol:/db/vol/
-    networks:
-      - dbnetwork
-      - appnetwork
+    deploy:
+      replicas=3
 
-volumes:
-  appvol: 
-    driver: local
-  dbvol:
-    driver: local
-
-networks:
-  appnetwork:
-    driver: bridge
-  dbnetwork:
-    driver: bridge
     
